@@ -19,7 +19,7 @@ public:
         while(!pq.empty())
         {
             vector<int>temp;
-            for(int i=0;i<=n;i++)
+            for(int i=1;i<=n+1;i++)
             {
                 if(!pq.empty()){
                 int freq=pq.top();
