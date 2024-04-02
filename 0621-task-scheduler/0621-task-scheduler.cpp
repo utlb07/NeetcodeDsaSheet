@@ -28,10 +28,6 @@ public:
                 temp.push_back(freq);
                 }
             }
-            for(auto i:temp)
-            {
-                cout<<"ele"<<i<<endl;
-            }
             for(int &f:temp)
             {
                 if(f>0)
@@ -39,7 +35,7 @@ public:
                     pq.push(f);
                 }
             }
-            if(pq.empty())
+            if(pq.empty()==true)
             {
                 time+=temp.size();
             }
