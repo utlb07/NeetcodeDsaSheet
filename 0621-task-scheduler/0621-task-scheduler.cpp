@@ -19,7 +19,7 @@ public:
         while(!pq.empty())
         {
             vector<int>temp;
-            for(int i=1;i<=n+1;i++)
+            for(int i=0;i<=n;i++)
             {
                 if(!pq.empty()){
                 int freq=pq.top();
@@ -27,6 +27,10 @@ public:
                 freq--;
                 temp.push_back(freq);
                 }
+            }
+            for(auto i:temp)
+            {
+                cout<<"ele"<<i<<endl;
             }
             for(int &f:temp)
             {
