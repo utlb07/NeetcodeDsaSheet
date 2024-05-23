@@ -20,7 +20,7 @@ class Solution
                 }
 
                 int cnt = 0;
-                while (mp.count(ele))
+                while (mp.count(ele)==true)
                 {
                     cnt++;
                     ele++;
