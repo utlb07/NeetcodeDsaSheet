@@ -4,32 +4,30 @@ class Solution
         int longestConsecutive(vector<int> &nums)
         {
             int n = nums.size();
-            if (n == 0)
-            {
-                return 0;
-            }
             unordered_map<int, int> mp;
+            int ans = 0;
             for (int i = 0; i < n; i++)
             {
                 mp[nums[i]]++;
             }
-            int ans = 1;
-            for (int i = 0; i < n; i++)
+            int i = 0, j = 0;
+            for (int j = 0; j < n; j++)
             {
-                if (mp.count(nums[i] - 1))
+
+                if (mp.count(nums[j] - 1)==true)
                 {
                     continue;
                 }
-                int x = nums[i];
-                cout << x << endl;
+                int ele = nums[j];
                 int cnt = 0;
-                while (mp.count(x))
+                while (mp.count(ele))
                 {
                     cnt++;
-                    x++;
-                    ans = max(cnt, ans);
+                    ele++;
+                    ans = max(ans, cnt);
                 }
             }
+
             return ans;
         }
 };
