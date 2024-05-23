@@ -10,15 +10,15 @@ class Solution
             {
                 mp[nums[i]]++;
             }
-            int i = 0, j = 0;
+            int j = 0;
             for (int j = 0; j < n; j++)
             {
-
-                if (mp.count(nums[j] - 1)==true)
+                int ele = nums[j];
+                if (mp.count(ele - 1) == true)
                 {
                     continue;
                 }
-                int ele = nums[j];
+
                 int cnt = 0;
                 while (mp.count(ele))
                 {
