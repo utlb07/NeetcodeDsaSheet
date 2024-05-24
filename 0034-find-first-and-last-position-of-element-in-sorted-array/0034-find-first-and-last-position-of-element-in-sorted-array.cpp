@@ -49,8 +49,15 @@ public:
         return ans;
     }
     vector<int> searchRange(vector<int>& nums, int target) {
-        int x=first(nums,target);
-        int y=last(nums,target);
-        return {x,y};
+        // int x=first(nums,target);
+        // int y=last(nums,target);
+        // return {x,y
+        int n=lower_bound(nums.begin(),nums.end(),target)-nums.begin();
+         int m=upper_bound(nums.begin(),nums.end(),target)-nums.begin();
+        if(n==m)
+        {
+            return {-1,-1};
+        }
+        return {n,m-1};
     }
 };
