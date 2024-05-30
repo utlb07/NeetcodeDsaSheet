@@ -12,9 +12,6 @@ public:
             else
             {
                
-                // if(st.empty())
-                // {
-                //     return false;
                 // }
                 if(s[i]==')'&&st.top()!='('||s[i]==']'&&st.top()!='['||s[i]=='}'&&st.top()!='{')
                 {
