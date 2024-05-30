@@ -1,27 +1,28 @@
 class Solution {
 public:
-    int dp[101][101];
-    int fun(int m,int n)
+    int fun(int row,int col,vector<vector<int>>&dp,int m,int n)
     {
-        for(int i=0;i<m;i++)
+        if(row>=m||col>=n)
         {
-            dp[i][0]=1;
+            return 0;
         }
-        for(int i=0;i<n;i++)
+        if(row==m-1&&col==n-1)
         {
-            dp[0][i]=1;
+            return 1;
         }
-        for(int i=1;i<m;i++)
+        if(dp[row][col]!=-1)
         {
-            for(int j=1;j<n;j++)
-            {
-                dp[i][j]=dp[i-1][j]+dp[i][j-1];
-            }
+            return dp[row][col];
         }
-        return dp[m-1][n-1];
+        int up=0,right=0;
+        if(row+1<=m-1)
+        up=fun(row+1,col,dp,m,n);
+        if(col+1<=n-1)
+        right=fun(row,col+1,dp,m,n);
+        return dp[row][col]=up+right;
     }
     int uniquePaths(int m, int n) {
-        memset(dp,0,sizeof(dp));
-        return fun(m,n);
+        vector<vector<int>>dp(m+1,vector<int>(n+1,-1));
+    return fun(0,0,dp,m,n);
     }
 };
