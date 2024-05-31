@@ -23,22 +23,50 @@ bool fun(int id,int s,vector<int>&arr)
     int nottake=fun(id+1,s,arr);
     return dp[id][s]=take||nottake;
 }
-    bool canPartition(vector<int>& nums) {
-        int n=nums.size();
+    bool canPartition(vector<int>& arr) {
+        int n=arr.size();
         int s=0;
-        memset(dp,-1,sizeof(dp));
-        for(auto &it:nums)
+        memset(dp,0,sizeof(dp));
+        for(auto &it:arr)
         {
             s+=it;
         }
-        int target=s/2;
+        int sum=s/2;
         if(s%2!=0)
         {
             return false;
         }
         else
         {
-            return fun(0,target,nums);
+             bool dp[n+1][sum+1];
+        for (int i = 0; i < arr.size() + 1; i++) 
+        {
+            for (int j = 0; j < sum + 1; j++)
+            {
+                if (i == 0) {
+                    dp[i][j] = false;
+                }
+                if (j == 0) 
+                {
+                    dp[i][j] = true;
+                }
+            }
+        }
+        for(int i=1;i<=n;i++)
+        {
+            for(int j=1;j<=sum;j++)
+            {
+                if(j-arr[i-1]>=0)
+                {
+                    dp[i][j]=dp[i-1][j-arr[i-1]]||dp[i-1][j];
+                }
+                else
+                {
+                    dp[i][j]=dp[i-1][j];
+                }
+            }
+        }
+        return dp[arr.size()][sum];
         }
     }
 };
