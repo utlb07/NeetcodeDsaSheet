@@ -57,8 +57,11 @@ vector<int> previous_smaller(vector<int>& heights){
                     histogram[j]+=1;
                 else
                     histogram[j]=0;
+                cout<<histogram[j]<<" ";
             }
+            cout<<"nline"<<endl;
             result = max(result, largestRectangleArea(histogram));
+            cout<<"ans is"<<result<<endl;
         }
         return result;
         
