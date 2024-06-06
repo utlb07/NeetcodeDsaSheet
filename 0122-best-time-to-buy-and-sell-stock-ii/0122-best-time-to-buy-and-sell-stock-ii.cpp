@@ -23,7 +23,16 @@ public:
         return dp[id][buy]=max(take,nottake);
     }
     int maxProfit(vector<int>& prices) {
-        memset(dp,-1,sizeof(dp));
-        return fun(prices,0,0);
+        memset(dp,0,sizeof(dp));
+        //return fun(prices,0,0);
+         int n = prices.size();
+       // vector<vector<int>> dp(n+1, vector<int>(2, 0));
+        for (int ind=n-1; ind>=0; ind--) {
+            for (int buy=0; buy<=1; buy++) {
+                if (buy) dp[ind][buy] = max(-prices[ind] + dp[ind+1][0], 0 + dp[ind+1][1]);
+                else dp[ind][buy] = max(prices[ind] + dp[ind+1][1], 0 + dp[ind+1][0]);
+            }
+        }
+        return dp[0][1];
     }
 };
