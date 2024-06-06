@@ -33,7 +33,7 @@ public:
         {
 
             for(int buy=0; buy<=1; buy++) {
-                if(buy) {
+                if(buy==1) {
                     dp[i][buy] = max(-prices[i] + dp[i + 1][0], 0 + dp[i + 1][1]);
                 }
                 else dp[i][buy] = max(prices[i] + dp[i + 2][1], 0 + dp[i + 1][0]);
