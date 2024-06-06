@@ -19,11 +19,13 @@ public:
             if(slow==fast)
             {
               
+                //cout<<slow->val<<" "<<fast->val<<endl;
                 while(slow!=entry)
                 {
                     entry=entry->next;
                     slow=slow->next;
                 }
+                //cout<<entry->val<<endl;
                 return entry;
             }
         }
