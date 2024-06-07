@@ -20,14 +20,6 @@ public:
             adj[v].push_back(u);
         }
         vector<bool>vis(n+1,false);
-        dfs(adj,src,dest,vis);
-        if(vis[dest]==true)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        dfs(adj,src,dest,vis);return vis[dest]==true;
     }
 };
