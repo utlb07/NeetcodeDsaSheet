@@ -1,50 +1,49 @@
 class Solution {
 public:
-    void bfs(int node,vector<int>adj[],vector<int>&vis)
+    void bfs(int src,vector<int>adj[],vector<bool>&vis)
     {
-
-        queue<int>q;
-        q.push(node);
-        vis[node] = 1;
-
+         queue<int>q;
+       
+        q.push(src);
+        vis[src]=true;
         while(!q.empty())
         {
-            int nodeval = q.front();
+            int curr=q.front();
             q.pop();
-            for(auto x:adj[nodeval])
+            for(auto it:adj[curr])
             {
-                if(vis[x]==0)
+                if(!vis[it])
                 {
-                    vis[x] = 1;
-                    q.push(x);
+                    q.push(it);
+                    vis[it]=true;
+                  
                 }
             }
         }
+        
     }
-    int findCircleNum(vector<vector<int>>& isConnected) 
-    {
-        int n = isConnected.size();
-        vector<int>adj[n];
-        vector<int>vis(n,0);
-        for(int i=0;i<n;i++)
-        {
-            for(int j=0;j<n;j++)
-            {
-                if(isConnected[i][j] == 1 && i!=j)
-                {
-                    adj[i].push_back(j);
-                    adj[j].push_back(i);                }
-            }
-        }  
-        int cnt=0;
-        for(int i=0;i<n;i++)
-        {
-            if(vis[i]==0)
-            {
-                cnt++;
-                bfs(i,adj,vis);
+    int findCircleNum(vector<vector<int>>& isConnected) {
+        int n=isConnected.size();
+        int m=isConnected[0].size();
+       // vector<int>adj;
+         vector<int> adj[n+1];
+        for(int i=0; i<n; i++){
+            for(int j=0; j<m; j++){
+                if(isConnected[i][j]==1){
+                    adj[i+1].push_back(j+1);
+                }
             }
         }
-        return cnt;
+        int cnt=0;
+        vector<bool>vis(n+1,false);
+       for(int i=0;i<n;i++)
+       {
+           if(!vis[i+1])
+           {
+               bfs(i+1,adj,vis);
+               cnt++;
+           }
+       }
+       return cnt;
     }
 };
