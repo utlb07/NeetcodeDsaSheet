@@ -6,8 +6,8 @@ class Solution
             int s = 0;
             unordered_map<int, int> mp;
             mp[0] = -1;
-            int j=0;
-           while(j<nums.size())
+            int j = 0;
+            while (j < nums.size())
             {
                 s += nums[j];
                 int rem = s % k;
@@ -22,8 +22,12 @@ class Solution
                 {
                     mp[rem] = j;
                 }
-               j++;
+                j++;
             }
             return false;
+            //5 0 0 0
+            //3
+            //mp[2]=1;
+            
         }
 };
