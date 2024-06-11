@@ -11,11 +11,10 @@ public:
             mp[s[j]-'a']++;
             while(mp[0]>=1&&mp[1]>=1&&mp[2]>=1)
             {
-                cnt++;
+                ans+=n-j;
                 mp[s[i]-'a']--;
                 i++;
             }
-            ans+=cnt;
             j++;
         }
         return ans;
