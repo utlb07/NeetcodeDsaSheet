@@ -1,7 +1,9 @@
 class Solution {
 public:
-    vector<vector<int>> updateMatrix(vector<vector<int>>& mat) {
-        int n = mat.size();
+ vector<vector<int>> dir = {{1, 0}, {0, 1}, {0, -1}, {-1, 0}};
+
+    vector<vector<int>> updateMatrix(vector<vector<int>> &mat) {
+      int n = mat.size();
         int m = mat[0].size();
 
         vector<vector<int>> vis(n,vector<int>(m,0));
